@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	COVER_DIMENSIONS_PX    = 910
+	COVER_DIMENSIONS_PX    = 920
 	MOVE_X                 = 450
 	MOVE_Y                 = 1360
 	COVER_ROTATION_DEGREES = 18.0
