@@ -12,9 +12,13 @@ import (
 )
 
 const (
-	COVER_DIMENSIONS_PX = 800
-	TEMP_FILE_NAME      = "../temp/temp.png"
-	OUT_DIR             = "../out/"
+	COVER_DIMENSIONS_PX    = 910
+	MOVE_X                 = 450
+	MOVE_Y                 = 1360
+	COVER_ROTATION_DEGREES = 18.0
+
+	TEMP_FILE_NAME = "../temp/temp.png"
+	OUT_DIR        = "../out/"
 )
 
 type Core struct {
@@ -49,17 +53,13 @@ func (c *Core) GeneratePfp() error {
 	var stdout bytes.Buffer
 	var stderr bytes.Buffer
 
-	moveDown := 800
-	moveLeft := 1600
-
 	//ffmpeg needs radians for rotation
-	rotationDegrees := 20.0
-	rotationRadians := rotationDegrees * (math.Pi / 180.0)
+	rotationRadians := COVER_ROTATION_DEGREES * (math.Pi / 180.0)
 
 	// big ffmpeg command to build the 'background' image
 	cmd := exec.Command("ffmpeg", "-y", "-i", coverPath,
-		"-vf", fmt.Sprintf("scale=800:800,pad=%d:%d:%d:%d:0x00000000,rotate=%f:ow=%d:oh=%d:c=0x00000000",
-			c.background.Width, c.background.Height, moveDown, moveLeft, rotationRadians, c.background.Width, c.background.Height),
+		"-vf", fmt.Sprintf("scale=%d:%d,pad=%d:%d:%d:%d:0x00000000,rotate=%f:ow=%d:oh=%d:c=0x00000000",
+			COVER_DIMENSIONS_PX, COVER_DIMENSIONS_PX, c.background.Width, c.background.Height, MOVE_X, MOVE_Y, rotationRadians, c.background.Width, c.background.Height),
 		TEMP_FILE_NAME)
 
 	cmd.Stdout = &stdout
