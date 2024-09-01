@@ -28,7 +28,7 @@ func main() {
 		imgs = append(imgs, *cover)
 	}
 
-	martinObj, err := ffmpeg.NewMartin("../examples/MartinListensToRealMusic.png")
+	martinObj, err := ffmpeg.NewMartin("../MartinListensToRealMusic.png")
 	if err != nil {
 		fmt.Println(err)
 	}
