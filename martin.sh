@@ -17,6 +17,6 @@ go build -o "$CURRENT_DIR/bin/martin.exe" main.go
 "$CURRENT_DIR/bin/martin.exe" # execute
 
 # cleanup temp files
-# rm -rf "$CURRENT_DIR/temp"
+rm -rf "$CURRENT_DIR/temp"
 
 cd "$CURRENT_DIR"
