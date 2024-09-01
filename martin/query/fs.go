@@ -1,4 +1,4 @@
-package reader
+package query
 
 import (
 	"bufio"
@@ -13,11 +13,17 @@ type AlbumQuery struct {
 	Artist string
 }
 
+func (q *AlbumQuery) String() string {
+	str := fmt.Sprintf("%s-%s", q.Title, q.Artist)
+
+	return strings.Replace(str, " ", "", -1)
+}
+
 const (
 	BUFFER_CAP = 1000
 )
 
-func GetRecords(inputPath string) ([]AlbumQuery, error) {
+func GetQuerys(inputPath string) ([]AlbumQuery, error) {
 
 	file, err := os.Open(inputPath)
 	if err != nil {

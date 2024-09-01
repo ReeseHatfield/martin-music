@@ -14,6 +14,7 @@ import (
 	"path/filepath"
 
 	"github.com/ReeseHatfield/ffmpeg"
+	"github.com/ReeseHatfield/query"
 )
 
 const (
@@ -46,11 +47,11 @@ type Artist struct {
 var ErrCoverArtNotFound = errors.New("Could not get cover art from ID")
 var ErrNoReleasesFound = errors.New("No releases could be found in release group")
 
-func GetCover(albumTitle, artistName string) (*ffmpeg.Image, error) {
+func GetCover(q query.AlbumQuery) (*ffmpeg.Image, error) {
 
 	params := url.Values{}
 	// release+group seems to get more accurate results than just `release`
-	params.Add("query", fmt.Sprintf(`release+group:"%s" AND artist:"%s"`, albumTitle, artistName))
+	params.Add("query", fmt.Sprintf(`release+group:"%s" AND artist:"%s"`, q.Title, q.Artist))
 	params.Add("fmt", "xml") // Ensuring response is in XML format
 	getMe := fmt.Sprintf("%s/?%s", baseURL, params.Encode())
 

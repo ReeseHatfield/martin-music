@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"math"
 	"os/exec"
+	"path"
 	"path/filepath"
 
 	"github.com/ReeseHatfield/ffmpeg"
@@ -38,7 +39,7 @@ func (c *Core) SetCover(img ffmpeg.Image) {
 	c.cover = &img
 }
 
-func (c *Core) GeneratePfp() error {
+func (c *Core) GeneratePfp(filename string) error {
 
 	if c.cover == nil {
 		return errors.New("Err: Cover image not set")
@@ -85,7 +86,7 @@ func (c *Core) GeneratePfp() error {
 
 	// need to make unique name for out file
 	cmd = exec.Command("ffmpeg", "-y", "-i", martinPath,
-		"-i", TEMP_FILE_NAME, "-filter_complex", "[1:v][0:v]overlay=0:0", "-c:v", "png", OUT_DIR+"pfp.png")
+		"-i", TEMP_FILE_NAME, "-filter_complex", "[1:v][0:v]overlay=0:0", "-c:v", "png", path.Join(OUT_DIR, filename+".png"))
 
 	err = cmd.Run()
 	if err != nil {
