@@ -17,7 +17,7 @@ const (
 	MOVE_Y                 = 1360
 	COVER_ROTATION_DEGREES = 18.0
 
-	TEMP_FILE_NAME = "../temp/temp.png"
+	TEMP_FILE_NAME = "../temp/transparent_background.png" // this may have broke
 	OUT_DIR        = "../out/"
 )
 

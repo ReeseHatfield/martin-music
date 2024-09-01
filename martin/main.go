@@ -2,12 +2,20 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/ReeseHatfield/core"
 	"github.com/ReeseHatfield/ffmpeg"
+	"github.com/ReeseHatfield/web"
 )
 
 func main() {
+
+	img, err := web.GetCover("You and Your Friends", "Peach Pit")
+
+	fmt.Println(img.Path)
+
+	os.Exit(0)
 
 	martinObj, err := ffmpeg.NewMartin("../examples/MartinListensToRealMusic.png")
 	if err != nil {
@@ -17,7 +25,7 @@ func main() {
 	c, err := core.NewCore(martinObj)
 
 	coverObj := &ffmpeg.Image{
-		Path: "../examples/cover.png",
+		Path: "../examples/cover3.png",
 	}
 	c.SetCover(*coverObj)
 
