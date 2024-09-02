@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/ReeseHatfield/core"
 	"github.com/ReeseHatfield/ffmpeg"
@@ -11,8 +12,9 @@ import (
 
 func main() {
 
-	// turn rel path to abs in bash?
-	recordQueries, err := query.GetQuerys("../examples/albums.txt")
+	fmt.Println("got here?")
+	albumFilePath := os.Args[1]
+	recordQueries, err := query.GetQuerys(albumFilePath)
 	if err != nil {
 		fmt.Println(err)
 	}
