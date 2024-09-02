@@ -14,8 +14,8 @@ import (
 
 const (
 	COVER_DIMENSIONS_PX    = 920
-	MOVE_X                 = 450
-	MOVE_Y                 = 1360
+	MOVE_X                 = 505
+	MOVE_Y                 = 1265
 	COVER_ROTATION_DEGREES = 18.0
 
 	TEMP_FILE_NAME = "../temp/transparent_background.png" // this may have broke
