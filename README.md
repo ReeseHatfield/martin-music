@@ -44,3 +44,6 @@ chmod u+x martin.sh
 After a while, the `out/` directory will contain your martin images
 
 
+# Acknowledgements
+
+Thanks to [Nathan Weiland](https://www.nathanweiland.com/) for the image template of Martin
