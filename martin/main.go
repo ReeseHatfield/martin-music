@@ -25,6 +25,7 @@ func main() {
 		cover, err := web.GetCover(q)
 		if err != nil {
 			fmt.Println("Could not find album cover for query " + q.String())
+			os.Exit(1)
 		}
 
 		imgs = append(imgs, *cover)
