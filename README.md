@@ -14,8 +14,6 @@
     <br>
 </p>
 
-# Due to the recent attacks against Archive.org, this project is currently down 
-
 ## Prequisites:
 - Golang
 
